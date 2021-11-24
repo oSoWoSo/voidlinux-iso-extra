@@ -5,7 +5,7 @@ PKGS="void-repo-nonfree void-repo-multilib void-repo-multilib-nonfree bzip2 cryp
 
 yes y | xbps-install -Su xbps
 yes y | xbps-install -Su
-yes y | xbps-install -S git make
+yes y | xbps-install -S git make void-repo-nonfree void-repo-multilib void-repo-multilib-nonfree
 cd /root
 [ ! -d 'void-mklive' ] && git clone 'https://github.com/void-linux/void-mklive.git'
 cd 'void-mklive/'
