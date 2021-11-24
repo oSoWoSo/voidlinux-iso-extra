@@ -12,3 +12,4 @@ cd 'void-mklive/'
 make clean
 make
 ./mklive.sh -a x86_64 -r 'https://mirrors.dotsrc.org/voidlinux/current' -p "$PKGS"
+./mklive.sh -a aarch64 -r 'https://mirrors.dotsrc.org/voidlinux/current/aarch64' -r 'https://mirrors.dotsrc.org/voidlinux/current/aarch64/nonfree' -p "$PKGS"
