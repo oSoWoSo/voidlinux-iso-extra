@@ -10,7 +10,7 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
       - name: Install dependencies
-        run: yes y | xbps-install -S gcc bash liblz4 lzo kmod e2fsprogs
+        run: yes y | xbps-install -S gcc bash liblz4 lzo kmod e2fsprogs cross-aarch64-linux-gnu
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Generate ISO
