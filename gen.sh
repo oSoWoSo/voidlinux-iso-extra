@@ -11,4 +11,4 @@ cd /root
 cd 'void-mklive/'
 make clean
 make
-./mklive.sh -a aarch64 -b rpi4-base -r 'https://alpha.de.repo.voidlinux.org/current/aarch64/' -p "$PKGS"
+./mklive.sh -a aarch64 -b rpi4-base -r 'https://alpha.de.repo.voidlinux.org/current/aarch64' -p "$PKGS"
