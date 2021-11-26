@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Additional packages in the ISO
-PKGS="bzip2 cryptsetup curl dialog ddrescue gnupg2 git gptfdisk gzip efibootmgr lvm2 makepasswd mdadm mosh nano p7zip rsync wget vim unzip xz zip"
+PKGS="bzip2 cryptsetup curl dialog ddrescue gnupg2 git gzip lvm2 makepasswd mdadm mosh nano p7zip rsync wget vim unzip xz zip"
 
 yes y | xbps-install -Su xbps
 yes y | xbps-install -Su
