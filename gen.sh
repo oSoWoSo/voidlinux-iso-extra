@@ -5,7 +5,7 @@ PKGS="rpi4-base bzip2 cryptsetup curl dialog ddrescue gnupg2 git gzip makepasswd
 
 yes y | xbps-install -Su xbps
 yes y | xbps-install -Su
-yes y | xbps-install -S git make coreutils cross-aarch64-linux-gnu cross-aarch64-linux-gnu-libc
+yes y | xbps-install -S git make base-system coreutils cross-aarch64-linux-gnu cross-aarch64-linux-gnu-libc
 cd /root
 [ ! -d 'void-mklive' ] && git clone 'https://github.com/void-linux/void-mklive.git'
 cd 'void-mklive/'
