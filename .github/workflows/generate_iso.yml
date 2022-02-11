@@ -9,6 +9,8 @@ jobs:
       run:
         shell: sh
     steps:
+      - name: Install dependencies for actions/checkout@v2
+        run: xbps-install --yes -S gcc
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Get current date
@@ -18,8 +20,6 @@ jobs:
         run: |
           chmod +x ./ci/set_repository.sh
           ./ci/set_repository.sh
-      - name: Install dependencies for actions/checkout@v2
-        run: xbps-install --yes -S gcc
       - name: Install dependencies
         run: |
           chmod +x ./ci/install_dependencies.sh
