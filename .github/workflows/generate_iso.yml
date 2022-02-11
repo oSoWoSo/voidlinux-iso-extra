@@ -4,7 +4,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/void-linux/void-linux:latest-full-x86_64
-      options: --privileged
     defaults:
       run:
         shell: sh
@@ -19,11 +18,15 @@ jobs:
       - name: Set repository for xbps
         run: |
           chmod +x ./ci/set_repository.sh
-          ./ci/set_repository.sh
+          sudo ./ci/set_repository.sh
       - name: Install dependencies
         run: |
           chmod +x ./ci/install_dependencies.sh
-          ./ci/install_dependencies.sh
+          sudo ./ci/install_dependencies.sh
+      - name: Build packages with xbps-src
+        run: |
+          chmod +x ./ci/xbpssrc.sh
+          ./ci/xbpssrc.sh
       - name: Generate ISO
         run: |
           chmod +x ./gen.sh

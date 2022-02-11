@@ -24,25 +24,8 @@ xbps-install --yes -Su
 xbps-install --yes -S git make
 cd '/root'
 
-[ ! -d 'void-packages' ] && git clone --depth 1 'https://github.com/void-linux/void-packages.git' 'void-packages'
-[ ! -d 'custom-void-packages' ] && git clone --depth 1 'https://github.com/notchtc/custom-void-packages.git' 'custom-void-packages'
-
-cp -r custom-void-packages/* void-packages/srcpkgs
-
-cd void-packages
-
-./xbps-src binary-bootstrap
-
-custompkgs="connman dmenu libXft mksh numix-solarized-gtk-theme slock st stylua ytfzf"
-
-for i in $custompkgs; do
-    ./xbps-src pkg $i
-done
-
-cd '/root'
-
 [ ! -d 'void-mklive' ] && git clone -b master --single-branch --depth 1 'https://github.com/void-linux/void-mklive.git' 'void-mklive'
 cd 'void-mklive/'
 make clean
 make
-./mklive.sh -a 'x86_64' -r "/root/void-packages/hostdir/binpkgs" -r "${REPO}" -r "${MULTILIB}" -r "${NONFREE}" -p "${BASE_PKGS} ${PKGS}"
+./mklive.sh -a 'x86_64' -r "$HOME/void-packages/hostdir/binpkgs" -r "${REPO}" -r "${MULTILIB}" -r "${NONFREE}" -p "${BASE_PKGS} ${PKGS}"
