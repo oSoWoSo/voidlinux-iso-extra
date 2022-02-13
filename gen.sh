@@ -8,7 +8,7 @@ PKGS='bzip2 cryptsetup curl gnupg git gptfdisk gzip efibootmgr lvm2 makepasswd m
 # Source: https://github.com/void-linux/void-mklive/blob/master/build-x86-images.sh.in
 BASE_PKGS='dialog cryptsetup lvm2 mdadm void-docs-browse grub-i386-efi grub-x86_64-efi'
 
-CUSTOM='https://github.com/notchtc/custom-void-packages/raw/repo/current'
+CUSTOM='https://notchtc.github.io/void-repo'
 REPO='https://void.sakamoto.pl/current'
 MULTILIB='https://void.sakamoto.pl/current/multilib'
 NONFREE='https://void.sakamoto.pl/current/nonfree'
