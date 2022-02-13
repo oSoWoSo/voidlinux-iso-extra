@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Additional packages in the ISO
-PKGS='bzip2 cryptsetup curl gnupg git gptfdisk gzip efibootmgr lvm2 makepasswd mdadm p7zip wget unzip xz zip xorg-minimal xorg-fonts xf86-input-synaptics setxkbmap xbacklight xev xkill xmessage xprop xrandr xrdb base-devel mesa-dri vulkan-loader mesa-vulkan-radeon xf86-video-amdgpu mesa-vaapi mesa-vdpau bleachbit chrony cmus cmus-flac cmus-opus cmus-pulseaudio cmusfm iwd dunst ffmpeg firefox fzf gimp herbstluftwm hsetroot htop imv keepassxc legendary maim mpv neovim newsboat nicotine+ opendoas opus opusfile opustags pamixer picard qbittorrent steam telegram-desktop trash-cli xclip xf86-input-evdev xonotic xonotic-data-low yt-dlp zathura zathura-pdf-mupdf pipewire unclutter libX11-devel libXft-devel libXinerama-devel qt5ct'
+PKGS='bzip2 cryptsetup curl gnupg git gptfdisk gzip efibootmgr lvm2 makepasswd mdadm p7zip wget unzip xz zip xorg-minimal xorg-fonts xf86-input-synaptics setxkbmap xbacklight xev xkill xmessage xprop xrandr xrdb base-devel mesa-dri vulkan-loader mesa-vulkan-radeon xf86-video-amdgpu mesa-vaapi mesa-vdpau bleachbit chrony cmus cmus-flac cmus-opus cmus-pulseaudio cmusfm iwd dunst ffmpeg firefox fzf gimp herbstluftwm hsetroot htop imv keepassxc legendary maim mpv neovim newsboat nicotine+ opendoas opus opusfile opustags pamixer picard qbittorrent steam telegram-desktop trash-cli xclip xf86-input-evdev xonotic xonotic-data-low yt-dlp zathura zathura-pdf-mupdf pipewire unclutter libX11-devel libXft-devel libXinerama-devel qt5ct dmenu libXft mksh numix-solarized-gtk-theme slock st stylua ytfzf'
 
 # Base packages required for livecd
 # Source: https://github.com/void-linux/void-mklive/blob/master/build-x86-images.sh.in
