@@ -17,16 +17,14 @@ NONFREE='https://void.sakamoto.pl/current/nonfree'
 rm -fr /etc/xbps.d
 mkdir -p -m 755 /etc/xbps.d
 echo "repository=$REPO" > /etc/xbps.d/00-repository-main.conf
-echo "repository=$MULTILIB" > /etc/xbps.d/10-repository-multilib.conf
-echo "repository=$NONFREE" > /etc/xbps.d/10-repository-nonfree.conf
 
 xbps-install --yes -Su xbps
 xbps-install --yes -Su
 xbps-install --yes -S git make
 cd '/root'
 
-[ ! -d 'void-mklive' ] && git clone -b master --single-branch --depth 1 'https://github.com/notchtc/void-mklive.git' 'void-mklive'
+[ ! -d 'void-mklive' ] && git clone -b master --single-branch --depth 1 'https://github.com/void-linux/void-mklive.git' 'void-mklive'
 cd 'void-mklive/'
 make clean
 make
-./mklive.sh -a 'x86_64' -r "${MULTILIB}" -r "${NONFREE}" -r "${REPO}" "${CUSTOM}" -p "${BASE_PKGS} ${PKGS}"
+./mklive.sh -a 'x86_64' -r "${MULTILIB}" -r "${NONFREE}" -r "${REPO}" -r "${CUSTOM}" -p "${BASE_PKGS} ${PKGS}"
