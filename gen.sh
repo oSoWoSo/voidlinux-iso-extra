@@ -21,8 +21,8 @@ echo "repository=$REPO" > /etc/xbps.d/00-repository-main.conf
 xbps-install --yes -Su xbps
 xbps-install --yes -Su
 xbps-install --yes -S git make
-cd '/root'
 
+cd '/root'
 [ ! -d 'void-mklive' ] && git clone -b master --single-branch --depth 1 'https://github.com/void-linux/void-mklive.git' 'void-mklive'
 cd 'void-mklive/'
 make clean
