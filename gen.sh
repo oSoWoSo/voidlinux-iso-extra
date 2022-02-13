@@ -23,7 +23,7 @@ xbps-install --yes -Su
 xbps-install --yes -S git make
 
 cd '/root'
-[ ! -d 'void-mklive' ] && git clone -b master --single-branch --depth 1 'https://github.com/void-linux/void-mklive.git' 'void-mklive'
+[ ! -d 'void-mklive' ] && git clone -b master --single-branch --depth 1 'https://github.com/notchtc/void-mklive.git' 'void-mklive'
 cd 'void-mklive/'
 make clean
 make
