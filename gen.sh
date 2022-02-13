@@ -8,7 +8,7 @@ PKGS='bzip2 cryptsetup curl gnupg git gptfdisk gzip efibootmgr lvm2 makepasswd m
 # Source: https://github.com/void-linux/void-mklive/blob/master/build-x86-images.sh.in
 BASE_PKGS='dialog cryptsetup lvm2 mdadm void-docs-browse grub-i386-efi grub-x86_64-efi'
 
-REPO='https://void.sakamoto.pl/current/'
+REPO='https://void.sakamoto.pl/current'
 MULTILIB='https://void.sakamoto.pl/current/multilib'
 NONFREE='https://void.sakamoto.pl/current/nonfree'
 
@@ -24,7 +24,7 @@ xbps-install --yes -Su
 xbps-install --yes -S git make
 cd '/root'
 
-[ ! -d 'void-mklive' ] && git clone -b master --single-branch --depth 1 'https://github.com/void-linux/void-mklive.git' 'void-mklive'
+[ ! -d 'void-mklive' ] && git clone -b master --single-branch --depth 1 'https://github.com/notchtc/void-mklive.git' 'void-mklive'
 cd 'void-mklive/'
 make clean
 make
