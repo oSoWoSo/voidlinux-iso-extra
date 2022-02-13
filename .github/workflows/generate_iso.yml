@@ -23,10 +23,6 @@ jobs:
         run: |
           chmod +x ./ci/install_dependencies.sh
           ./ci/install_dependencies.sh
-      - name: Build packages with xbps-src
-        run: |
-          chmod +x ./ci/xbpssrc.sh
-          ./ci/xbpssrc.sh
       - name: Generate ISO
         run: |
           chmod +x ./gen.sh

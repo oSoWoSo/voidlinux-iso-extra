@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd '$HOME'
+cd /root
 
 [ ! -d 'void-packages' ] && git clone --depth 1 'https://github.com/void-linux/void-packages.git' 'void-packages'
 [ ! -d 'custom-void-packages' ] && git clone --depth 1 'https://github.com/notchtc/custom-void-packages.git' 'custom-void-packages'

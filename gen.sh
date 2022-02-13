@@ -28,4 +28,4 @@ cd '/root'
 cd 'void-mklive/'
 make clean
 make
-./mklive.sh -a 'x86_64' -r "$HOME/void-packages/hostdir/binpkgs" -r "${REPO}" -r "${MULTILIB}" -r "${NONFREE}" -p "${BASE_PKGS} ${PKGS}"
+./mklive.sh -a 'x86_64' -r "https://github.com/notchtc/custom-void-packages/raw/repo/current" -r "${REPO}" -r "${MULTILIB}" -r "${NONFREE}" -p "${BASE_PKGS} ${PKGS}"
