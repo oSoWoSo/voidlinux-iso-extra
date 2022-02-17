@@ -28,8 +28,23 @@ jobs:
         run: |
           chmod +x ./gen.sh
           ./gen.sh
-      - name: Upload ISO
-        uses: actions/upload-artifact@v2
+      - name: Create release
+        uses: actions/create-release@v1
+        id: create_release
         with:
-           name: void-live-x86_64-${{ steps.date.outputs.date }}-${{ github.sha }}.iso
-           path: /root/void-mklive/void-live-x86_64-*.iso
+          draft: false
+          prerelease: false
+          release_name: void-live-x86_64-${{ steps.date.outputs.date }}-${{ github.sha }}
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Upload artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /root/void-mklive/void-live-x86_64-*.iso
+          asset_name: void-live-x86_64-${{ steps.date.outputs.date }}-${{ github.sha }}.iso
+          asset_content_type: application/gzip
