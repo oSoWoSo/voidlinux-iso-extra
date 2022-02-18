@@ -9,11 +9,13 @@ PKGS='bzip2 connman connman-ui cryptsetup curl gnupg git gptfdisk gzip efibootmg
 BASE_PKGS='dialog cryptsetup lvm2 mdadm void-docs-browse grub-i386-efi grub-x86_64-efi'
 
 REPO='https://mirrors.dotsrc.org/voidlinux/current'
+NONFREE="$REPO/nonfree"
 
 # Set repository for xbps
 rm -fr /etc/xbps.d
 mkdir -p -m 755 /etc/xbps.d
-echo "repository=$REPO" > /etc/xbps.d/repo.conf
+echo "repository=$REPO" > /etc/xbps.d/00-repository-main.conf
+echo "repository=$NONFREE" > /etc/xbps.d/10-repository-nonfree.conf
 
 xbps-install --yes -Su xbps
 xbps-install --yes -Su
@@ -24,4 +26,4 @@ cd '/root'
 cd 'void-mklive/'
 make clean
 make
-./mklive.sh -a 'x86_64' -r "${REPO}" -p "${BASE_PKGS} ${PKGS}"
+./mklive.sh -a 'x86_64' -r "${NONFREE}" -r "${REPO}" -p "${BASE_PKGS} ${PKGS}"
