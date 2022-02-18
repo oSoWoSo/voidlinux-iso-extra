@@ -6,9 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
       - uses: rickstaa/action-create-tag@v1
         with:
-          tag: "${{ github.sha }}"
+          tag: "${{ steps.date.outputs.date }}"
 
   gen_iso:
     runs-on: ubuntu-latest
@@ -37,7 +40,7 @@ jobs:
           draft: false
           prerelease: false
           release_name: ${{ steps.date.outputs.date }}-${{ github.sha }}
-          tag_name: ${{ github.sha }}
+          tag_name: ${{ steps.date.outputs.date }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Upload artifact
