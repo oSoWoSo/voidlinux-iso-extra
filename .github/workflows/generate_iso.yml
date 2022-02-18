@@ -1,5 +1,15 @@
-on: [push]
+on:
+  push:
+    branch: "master"
 jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "${{ github.sha }}"
+
   gen_iso:
     runs-on: ubuntu-latest
     container:
@@ -16,10 +26,6 @@ jobs:
         run: xbps-install --yes -S gcc bash liblz4 lzo kmod e2fsprogs
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Create tag
-        uses: rickstaa/action-create-tag@v1
-        with:
-          tag: ${{ steps.date.outputs.date }}-${{ github.sha }}
       - name: Generate ISO
         run: |
           chmod +x ./gen.sh
@@ -31,7 +37,7 @@ jobs:
           draft: false
           prerelease: false
           release_name: ${{ steps.date.outputs.date }}-${{ github.sha }}
-          tag_name: ${{ steps.date.outputs.date }}-${{ github.sha }}
+          tag_name: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Upload artifact
