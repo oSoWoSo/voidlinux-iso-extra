@@ -9,25 +9,23 @@ jobs:
       run:
         shell: sh
     steps:
-      - name: Install dependencies for actions/checkout@v2
-        run: xbps-install --yes -S gcc
-      - name: Checkout repository
-        uses: actions/checkout@v2
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
-      - name: Set repository for xbps
-        run: |
-          chmod +x ./ci/set_repository.sh
-          ./ci/set_repository.sh
       - name: Install dependencies
         run: |
           chmod +x ./ci/install_dependencies.sh
           ./ci/install_dependencies.sh
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Create tag
         uses: rickstaa/action-create-tag@v1
         with:
           tag: ${{ steps.date.outputs.date }}-${{ github.sha }}
+      - name: Set repository for xbps
+        run: |
+          chmod +x ./ci/set_repository.sh
+          ./ci/set_repository.sh
       - name: Generate ISO
         run: |
           chmod +x ./gen.sh
