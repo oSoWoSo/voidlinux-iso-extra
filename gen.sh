@@ -2,20 +2,14 @@
 set -euo pipefail
 
 # Additional packages in the ISO
-PKGS='bzip2 connman connman-ui cryptsetup curl gnupg git gptfdisk gzip efibootmgr lvm2 makepasswd mdadm p7zip wget unzip xz zip xorg-minimal xorg-fonts xf86-input-synaptics setxkbmap xbacklight xev xkill xmessage xprop xrandr xrdb base-devel mesa-dri vulkan-loader mesa-vulkan-radeon xf86-video-amdgpu mesa-vaapi mesa-vdpau bleachbit chrony cmus cmus-flac cmus-opus cmus-pulseaudio cmusfm iwd dunst ffmpeg firefox fzf gimp herbstluftwm hsetroot htop imv keepassxc legendary maim mpv neovim newsboat nicotine+ opendoas opus opusfile opustags pamixer picard qbittorrent steam telegram-desktop trash-cli xclip xf86-input-evdev xonotic xonotic-data-low yt-dlp zathura zathura-pdf-mupdf pipewire unclutter qt5ct polybar adwaita-plus elogind tlp xdg-user-dirs noto-fonts-emoji noto-fonts-cjk void-repo-nonfree'
+PKGS='bzip2 connman connman-ui cryptsetup curl gnupg git gptfdisk gzip efibootmgr lvm2 makepasswd mdadm p7zip wget unzip xz zip xorg-minimal xorg-fonts xf86-input-synaptics setxkbmap xbacklight xev xkill xprop xrandr xrdb base-devel mesa-dri vulkan-loader mesa-vulkan-radeon xf86-video-amdgpu mesa-vaapi mesa-vdpau bleachbit chrony cmus cmus-flac cmus-opus cmus-pulseaudio cmusfm iwd dunst ffmpeg firefox fzf gimp herbstluftwm hsetroot htop keepassxc maim mpv neovim newsboat nicotine+ opendoas opus opusfile pamixer picard qbittorrent telegram-desktop trash-cli xclip xf86-input-evdev yt-dlp zathura zathura-pdf-mupdf pipewire unclutter qt5ct polybar adwaita-plus elogind tlp xdg-user-dirs noto-fonts-emoji noto-fonts-cjk void-repo-nonfree nsxiv'
 
 # Base packages required for livecd
 # Source: https://github.com/void-linux/void-mklive/blob/master/build-x86-images.sh.in
 BASE_PKGS='dialog cryptsetup lvm2 mdadm void-docs-browse grub-i386-efi grub-x86_64-efi'
 
-
 # Set repository for xbps
-MULTILIB='https://void.sakamoto.pl/current/multilib'
-NONFREE='https://void.sakamoto.pl/current/nonfree'
-
 REPO='https://repo-us.voidlinux.org/current'
-MULTILIB='https://repo-us.voidlinux.org/current/multilib'
-NONFREE='https://repo-us.voidlinux.org/current/nonfree'
 
 rm -fr /etc/xbps.d
 mkdir -p -m 755 /etc/xbps.d
@@ -30,4 +24,4 @@ cd '/root'
 cd 'void-mklive/'
 make clean
 make
-./mklive.sh -a 'x86_64' -r "${MULTILIB}" -r "${NONFREE}" -r "${REPO}" -p "${BASE_PKGS} ${PKGS}"
+./mklive.sh -a 'x86_64' -r "${REPO}" -p "${BASE_PKGS} ${PKGS}"
