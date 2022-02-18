@@ -28,14 +28,17 @@ jobs:
         run: |
           chmod +x ./gen.sh
           ./gen.sh
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: ${{ steps.date.outputs.date }}-${{ github.sha }}
       - name: Create release
         uses: actions/create-release@v1
         id: create_release
         with:
           draft: false
           prerelease: false
-          release_name: void-live-x86_64-${{ steps.date.outputs.date }}-${{ github.sha }}
-          tag_name: ${{ github.ref }}
+          release_name: ${{ steps.date.outputs.date }}-${{ github.sha }}
+          tag_name: ${{ steps.date.outputs.date }}-${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Upload artifact
