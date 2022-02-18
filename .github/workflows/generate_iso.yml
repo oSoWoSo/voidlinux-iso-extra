@@ -36,7 +36,6 @@ jobs:
           prerelease: false
           release_name: void-live-x86_64-${{ steps.date.outputs.date }}-${{ github.sha }}
           tag_name: ${{ github.ref }}
-          body_path: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Upload artifact
