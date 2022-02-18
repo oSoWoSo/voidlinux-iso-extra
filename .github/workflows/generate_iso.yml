@@ -2,17 +2,6 @@ on:
   push:
     branch: "master"
 jobs:
-  create_tag:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
-      - uses: rickstaa/action-create-tag@v1
-        with:
-          tag: "${{ steps.date.outputs.date }}"
-
   gen_iso:
     runs-on: ubuntu-latest
     container:
@@ -25,6 +14,13 @@ jobs:
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
+      - name: Set repository
+        run: |
+          REPO='https://repo-us.voidlinux.org/current'
+
+          rm -fr /etc/xbps.d
+          mkdir -p -m 755 /etc/xbps.d
+          echo "repository=$REPO" > /etc/xbps.d/repo.conf
       - name: Install dependencies
         run: xbps-install --yes -S gcc bash liblz4 lzo kmod e2fsprogs
       - name: Checkout repository
@@ -34,21 +30,10 @@ jobs:
           chmod +x ./gen.sh
           ./gen.sh
       - name: Create release
-        uses: actions/create-release@v1
-        id: create_release
+        uses: softprops/action-gh-release
         with:
           draft: false
           prerelease: false
-          release_name: ${{ steps.date.outputs.date }}-${{ github.sha }}
+          release_name: Void Linux x86_64 ${{ steps.date.outputs.date }}
           tag_name: ${{ steps.date.outputs.date }}
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-      - name: Upload artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /root/void-mklive/void-live-x86_64-*.iso
-          asset_name: void-live-x86_64-${{ steps.date.outputs.date }}-${{ github.sha }}.iso
-          asset_content_type: application/gzip
+          files: /root/void-mklive/void-live-x86_64-*.iso
