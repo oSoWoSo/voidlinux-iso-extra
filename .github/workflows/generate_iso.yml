@@ -34,10 +34,25 @@ jobs:
           chmod +x ./gen.sh
           ./gen.sh
       - name: Create release
+        id: attempt1
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           draft: false
           prerelease: false
+          name: Void Linux x86_64 ${{ steps.date.outputs.date }}
           tag_name: ${{ steps.date.outputs.date }}
-          files: /root/void-mklive/void-live-x86_64-*.iso
           token: ${{ secrets.TOKEN }}
+          files: /root/void-mklive/void-live-x86_64-*.iso
+      - name: Create release (retry)
+        id: attempt2
+        uses: softprops/action-gh-release@v1
+        if: steps.attempt1.outcome == 'failure'
+        continue-on-error: true
+        with:
+          draft: false
+          prerelease: false
+          name: Void Linux x86_64 ${{ steps.date.outputs.date }}
+          tag_name: ${{ steps.date.outputs.date }}
+          token: ${{ secrets.TOKEN }}
+          files: /root/void-mklive/void-live-x86_64-*.iso
