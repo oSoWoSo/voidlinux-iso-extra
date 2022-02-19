@@ -5,7 +5,7 @@ This is an unofficial ISO (x86_64) for [Linux Void](https://voidlinux.org/). It 
 This repo contains instruction for building it yourself. If you want more programs to be included in ISO then fork this repository, edit `gen.sh` and regenerate ISO yourself.
 
 ## Download ISO
-Go to releases.
+The ISO is in Actions.
 
 ## Regenerate ISO
 
