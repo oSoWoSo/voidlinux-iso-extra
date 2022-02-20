@@ -4,7 +4,7 @@ on:
 
 jobs:
   gen_iso:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     container:
       image: ghcr.io/void-linux/void-linux:latest-full-x86_64
       options: --privileged
