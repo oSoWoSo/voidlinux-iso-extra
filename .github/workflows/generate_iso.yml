@@ -4,7 +4,10 @@ on:
 
 jobs:
   gen_iso:
-    runs-on: [self-hosted, ryzen]
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/void-linux/void-linux:latest-full-x86_64
+      options: --privileged
     defaults:
       run:
         shell: sh
@@ -15,7 +18,6 @@ jobs:
       - name: Set repository
         run: |
           REPO='https://mirrors.dotsrc.org/voidlinux/current'
-
           # Set repository for xbps
           rm -fr /etc/xbps.d
           mkdir -p -m 755 /etc/xbps.d
